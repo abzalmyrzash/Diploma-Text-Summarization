@@ -1,0 +1,72 @@
+This is an adapted version of a Nature.com blog by Prof Benjamin K. Sovacool and Prof Andy Stirling, to accompany the publication of their paper “Differences in carbon emissions reduction between countries pursuing renewable electricity versus nuclear power” in Nature Energy. A University of Sussex press release also summarises the paper’s findings and policy recommendations.
+
+The role of nuclear power in a low-carbon future has been subject to a long and contentious debate. Is a nuclear or a renewables pathway the best way forward, or do we need a “do everything” approach where every deployable technology is rolled out to decarbonise our electricity supply as soon as possible?
+
+Many influential climate scientists and international organisations argue that a global shift towards nuclear power offers the best pathway to tackling the climate emergency and meeting the world’s increasing demands for electricity.
+
+Others argue that renewable sources of energy are the best pathway towards a low-carbon electricity system and assert that they are cleaner, safer and more economically sustainable than nuclear.
+
+In an attempt to negotiate these contending positions, a frequent mantra is that energy strategies should “do everything” in order to address the climate emergency. But – as a number of commentators have noted (for example, here and here) – this would actually be a highly irrational course of action.
+
+Where “doing everything” involves making investments that are slower or less cost effective, which divert resources away from preferable options, or which in some other way impede them, the result would be potentially disastrous for carbon emissions mitigation.
+
+Amidst many uncertainties, the real questions we should be addressing are about which investments offer the most cost-effective and beneficial ways forward.
+
+Our new paper, Differences in carbon emissions reduction between countries pursuing renewable electricity versus nuclear power, seeks to contribute towards this debate.
+Nuclear vs renewable energy – what this paper tells us
+
+Our paper focuses specifically on situations in which real-world constraints mean strategic choices must be made on resource allocation between nuclear or renewables-based electricity.
+
+Our research explores this dilemma retrospectively, examining past patterns in the attachments (i.e. investments) of different countries to nuclear or renewable strategies. Our paper addresses three hypotheses:
+
+    A “nuclear climate mitigation” hypothesis: that countries with a greater attachment to nuclear power will tend to have lower overall carbon emissions.
+     A “renewables climate mitigation” hypothesis: that countries with a greater attachment to renewables will tend to have lower overall carbon emissions.
+    A “crowding out” hypothesis: that countries with a greater attachment to nuclear will tend to have a lesser attachment to renewables, and vice versa.
+
+Across the study countries as a whole we found that the “nuclear climate mitigation” hypothesis is not sustained by the evidence at an appropriate level of statistical significance. The renewable climate mitigation hypothesis is confirmed with substantial significance. And the crowding out hypothesis is also significantly sustained.
+
+Put plainly – if countries want to lower emissions as substantially, rapidly and cost-effectively as possible, they should prioritise support for renewables rather than nuclear power. Pursuit of nuclear strategies risks taking up resources that could be used more effectively and suppressing the uptake of renewable energy.
+What causes these patterns?
+
+What might explain these patterns? Technologically, nuclear systems have been prone to greater construction cost overruns, delays, and longer lead times than similarly sized renewable energy projects. Thus, per dollar invested, the modularity of renewables projects offers quicker emissions reductions than large-scale, delay-prone, nuclear projects.
+
+Furthermore, renewables tend to display higher rates of “positive learning” where increased deployment results in lower costs and improved performance, especially for wind farms and solar energy parks. This contrasts with the experience of nuclear power in France which has been prone to “negative learning,” rising costs or reduced performance with the next generation of technology.
+
+In terms of policy, the incidents at Three Mile Island (1979), Chernobyl (1986), and Fukushima (2011), all resulted in significant tightening of regulatory requirements for nuclear reactors.
+
+Finally, wider social factors may also work against nuclear energy, and for renewable energy, facilitating faster acceptance, permitting and deployment.
+
+Of course, these are just informed speculations, beyond the scope of the paper itself. Other commentators will favor contrasting interpretations.
+
+But here, perhaps the most important issue – especially given the prominence of the topic and the scale of what is at stake – is that this kind of analysis has been so remarkably neglected over recent years.
+
+Given how highly charged and hotly contested the associated policy controversy is, it is rather strange that there is not a large body of work on these questions. Either way, the many open questions and issues of detail acknowledged in the paper show that much work remains to be done.
+The critical importance of independent research – our view
+
+We have presented the findings of our research. Now we must acknowledge the uncertainties and errors, divergent interpretations and clashing interests that make it difficult to achieve the comprehensive prioritising analysis called for at the beginning of this blog – while making a case for the vital importance of scientific scrutiny.
+
+In an ideal world of “evidence-based policy”, energy and climate policy would only go ahead after comprehensive research into every relevant positive or negative aspect of all possible energy resources.
+
+The resulting self-evident “facts” would be examined by objective analysts and any uncertainties eliminated, until a point where a single unambiguous ‘truth’ is determined – with grateful policy makers adopting the identified energy pathway or portfolio.
+
+Unfortunately, we do not live in an ideal world.
+
+Across various energy debates – and not restricted to any political constituency – crucial roles are often played by deliberate mis-representation of information, manipulation of discourse, co-option of leading opposing voices, direct subversion of opponents and stifling of meaningful public debate.
+
+Under conditions like this, the line between advocacy and scholarship (porous at the best of times) can become especially loose when analysts become passionate about their topic. The reasons for such passion can be as trivial as disciplinary identities or sectoral interests, or as deep as wider political ideologies. On all sides “theorising” can be reduced to a search for validation, and “investigation” to the selective collection of data.
+
+Energy debates suffer gravely from these syndromes. “Energy evangelists” on all sides are convinced they have found “the solution” to societies’ energy problems—whether this be solar energy, hydrogen fuel cells or nuclear reactors. The intensity of this advocacy (and the scale of the interests often behind it) can lead to everyone else’s solutions being treated as sacrilegious.
+
+So, exchanges of ideas can become hostile battlefields where proponents are unable to reconcile their underlying differences.
+
+There seems to be an especially pernicious asymmetry in this field. Those whom comparative analysis leads to be generally critical of nuclear power are labelled “anti-nuclear”, whilst no such generally-established terminology exists to the same degree for those who are (entirely legitimately – if debatably) critical of renewable energy.
+
+The situation is aggravated by so much research in this field being (unlike our own) funded (directly or indirectly) by organisations with prior entrenched interests on one side or another.
+
+Despite this, we have often found valued opportunities to bridge the divide with those who hold “opposing” views, but with similar open mindedness and good faith.
+
+It is in this spirit that our analysis is offered. We are open about its background and limitations. We acknowledge that our evidence does not compel only one supposedly definitive interpretation. We are clear about the conditions attached to our own interpretations. By publishing our full dataset and the detailed procedures undertaken in our regression analyses, we offer a basis for others to contest our findings.
+
+The “truth” of our study is in this sense not something arrived at by particular analysts claiming individually-transcendent authority, but by contrastingly-oriented analysts contending with each other in an open and pluralistic way, such as to arrive collectively at more robust understandings. This is the organised skepticism of independent science.
+
+If our analysis stimulates reactions in the same vein, then the cause of scientific scrutiny is reinforced. If, on the other hand, it leads to less qualified assertions and ad hominen labelling, then the chance of bridging the polarised divides is sadly diminished. We hope it will do the former.
