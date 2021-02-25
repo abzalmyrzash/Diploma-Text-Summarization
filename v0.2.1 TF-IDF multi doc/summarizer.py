@@ -1,4 +1,6 @@
 import math
+import glob
+import re
 import nltk
 # nltk.download('stopwords')
 # nltk.download('punkt')
@@ -8,105 +10,112 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 
 SENT_ID_LENGTH = 15 # number of first characters in a sentence that will be used as an "ID"
 
-def _create_frequency_matrix(sentences):
-    frequency_matrix = {}
+def read_documents():
+    docs = dict()
+    files_list = glob.glob('texts\\*.txt')
+    for filename in files_list:
+        # print(filename)
+        f = open(filename, 'r', encoding='utf-8')
+        doc = f.read()
+        # print(doc)
+        f.close()
+        slash_index = filename.rfind('\\')
+        name = filename[slash_index+1:-4]
+        # print(name)
+        docs[name] = doc
+
+    return docs
+
+def preprocess_document(document):
+    document = re.sub('[^A-Za-z .-]+', ' ', document)
+    document = document.replace('-', '')
+    document = document.replace('…', '')
+    document = document.replace('Mr.', 'Mr').replace('Mrs.', 'Mrs')
+    return document
+
+def preprocess_words(document):
     stopWords = set(stopwords.words("english"))
+    words = word_tokenize(document)
     ps = PorterStemmer()
 
-    for sent in sentences:
-        freq_table = {}
-        words = word_tokenize(sent)
-        for word in words:
-            word = word.lower()
-            word = ps.stem(word)
-            if word in stopWords:
-                continue
+    nonStopWords = []
+    for word in words:
+        word = ps.stem(word)
+        word = word.lower()
+        if word not in stopWords:
+            nonStopWords.append(word)
 
-            if word in freq_table:
-                freq_table[word] += 1
-            else:
-                freq_table[word] = 1
+    return nonStopWords
 
-        frequency_matrix[sent[:SENT_ID_LENGTH]] = freq_table
+def get_unique_words(words):
+    return list(set(words))
 
-    return frequency_matrix
+def _create_tf_table(words) -> dict:
 
+    freqTable = dict()
+    tfTable = dict()
 
-def _create_tf_matrix(freq_matrix):
-    tf_matrix = {}
+    totalWords = len(words)
+    for word in words:
+        if word in freqTable:
+            freqTable[word] += 1
+        else:
+            freqTable[word] = 1
+    
+    uniqueWords = get_unique_words(words)
+    for word in uniqueWords:
+        tfTable[word] = freqTable[word] / float(totalWords)
 
-    for sent, f_table in freq_matrix.items():
-        tf_table = {}
-
-        count_words_in_sentence = len(f_table)
-        for word, count in f_table.items():
-            tf_table[word] = count / count_words_in_sentence
-
-        tf_matrix[sent] = tf_table
-
-    return tf_matrix
+    return tfTable
 
 
-def _create_documents_per_words(freq_matrix):
-    word_per_doc_table = {}
+def _create_idf_table(uniqueWords, documents):
+    doc_per_word_table = dict() # in how many documents does a word occur
+    for word in words:
+        doc_per_word_table[word] = 1 # not 0 because 'documents' list doesn't contain our main document
+    
+    for doc in documents:
+        doc_words = preprocess_words(documents[doc])
 
-    for sent, f_table in freq_matrix.items():
-        for word, count in f_table.items():
-            if word in word_per_doc_table:
-                word_per_doc_table[word] += 1
-            else:
-                word_per_doc_table[word] = 1
+        for word in uniqueWords:
+            if word in doc_words:
+                doc_per_word_table[word] += 1
 
-    return word_per_doc_table
+    total_documents = len(documents) + 1
+    idf_table = dict()
 
+    for word in uniqueWords:
+        idf_table[word] = math.log10(total_documents / float(doc_per_word_table[word]))
 
-def _create_idf_matrix(freq_matrix, count_doc_per_words, total_documents):
-    idf_matrix = {}
-
-    for sent, f_table in freq_matrix.items():
-        idf_table = {}
-
-        for word in f_table.keys():
-            idf_table[word] = math.log10(total_documents / float(count_doc_per_words[word]))
-
-        idf_matrix[sent] = idf_table
-
-    return idf_matrix
+    return idf_table
 
 
-def _create_tf_idf_matrix(tf_matrix, idf_matrix):
-    tf_idf_matrix = {}
 
-    for (sent1, f_table1), (sent2, f_table2) in zip(tf_matrix.items(), idf_matrix.items()):
+def _create_tf_idf_table(words, documents):
+    tf_idf_table = dict()
 
-        tf_idf_table = {}
+    tf_table = _create_tf_table(words)
+    uniqueWords = get_unique_words(words)
+    idf_table = _create_idf_table(uniqueWords, documents)
 
-        for (word1, value1), (word2, value2) in zip(f_table1.items(),
-                                                    f_table2.items()):  # here, keys are the same in both the table
-            tf_idf_table[word1] = float(value1 * value2)
+    for word in uniqueWords:
+        tf_idf_table[word] = tf_table[word] * idf_table[word]
 
-        tf_idf_matrix[sent1] = tf_idf_table
-
-    return tf_idf_matrix
+    return tf_idf_table
 
 
-def _score_sentences(tf_idf_matrix) -> dict:
-    """
-    score a sentence by its word's TF
-    Basic algorithm: adding the TF frequency of every non-stop word in a sentence divided by total no of words in a sentence.
-    :rtype: dict
-    """
+def _score_sentences(sentences, tf_idf_table) -> dict:
+    sentenceValue = dict()
 
-    sentenceValue = {}
+    for sentence in sentences:
+        sent_ID = sentence[:SENT_ID_LENGTH]
+        sentenceValue[sent_ID] = 0
+        word_count_in_sentence = (len(word_tokenize(sentence)))
+        for word in tf_idf_table:
+            if word in sentence.lower():
+                sentenceValue[sent_ID] += tf_idf_table[word]
 
-    for sent, f_table in tf_idf_matrix.items():
-        total_score_per_sentence = 0
-
-        count_words_in_sentence = len(f_table)
-        for word, score in f_table.items():
-            total_score_per_sentence += score
-
-        sentenceValue[sent] = total_score_per_sentence / count_words_in_sentence
+        sentenceValue[sent_ID] = sentenceValue[sent_ID] / word_count_in_sentence
 
     return sentenceValue
 
@@ -130,37 +139,43 @@ def _generate_summary(sentences, sentenceValue, threshold):
     summary = ''
 
     for sentence in sentences:
-        if sentence[:SENT_ID_LENGTH] in sentenceValue and sentenceValue[sentence[:SENT_ID_LENGTH]] > (threshold):
+        sent_ID = sentence[:SENT_ID_LENGTH]
+        if sent_ID in sentenceValue and sentenceValue[sent_ID] > (threshold):
             summary += sentence + " "
             sentence_count += 1
 
     summary = summary[:-1] # remove last space
     return summary
 
-f = open("input.txt", "r")
-text = f.read()
+documents = read_documents() # read documents from 'texts/' folder
 
 
-sentences = sent_tokenize(text)
-total_documents = len(sentences)
-freq_matrix = _create_frequency_matrix(sentences)
-tf_matrix = _create_tf_matrix(freq_matrix)
-count_doc_per_words = _create_documents_per_words(freq_matrix)
-idf_matrix = _create_idf_matrix(freq_matrix, count_doc_per_words, total_documents)
-tf_idf_matrix = _create_tf_idf_matrix(tf_matrix, idf_matrix)
-sentence_scores = _score_sentences(tf_idf_matrix)
+# print document names and select document to summarize
+docNames = list(documents.keys())
+print("Enter a document's number to summarize")
+for i in range(len(documents)):
+    print(i+1, "-", docNames[i])
+
+index = int(input()) - 1
+docName = docNames[index]
+print("You selected", docName, "for summarization")
+main_document = documents.pop(docName)  # remove our selected main document from 'documents'
+                                                # for optimization reason
+
+main_document_prepr = preprocess_document(main_document)
+words = preprocess_words(main_document_prepr)
+# tf_table = _create_tf_table(words)
+# idf_table = _create_idf_table(get_unique_words(words), documents)
+tf_idf_table = _create_tf_idf_table(words, documents)
+# print({k: v for k, v in sorted(tf_idf_table.items(), key=lambda item: item[1], reverse=True)})
+
+sentences = sent_tokenize(main_document)
+sentence_scores = _score_sentences(sentences, tf_idf_table)
+# print(sentence_scores)
 threshold = _find_average_score(sentence_scores)
-
 summary = _generate_summary(sentences, sentence_scores, 1.3 * threshold)
 print(summary)
-# print(count_doc_per_words)
-# count_doc_per_words_sorted = dict(sorted(count_doc_per_words.items(), key=lambda item: item[1]))
-# print(count_doc_per_words_sorted)
-# f = open("count_doc_per_words.txt", "w")
-# f.write(str(count_doc_per_words_sorted))
-# print("\n\n\n\n\n\n\n\n")
-# print(freq_matrix)
 
-f = open("output.txt", "w")
+f = open('summaries/'+docName+'.txt', 'w')
 f.write(summary)
-
+f.close()

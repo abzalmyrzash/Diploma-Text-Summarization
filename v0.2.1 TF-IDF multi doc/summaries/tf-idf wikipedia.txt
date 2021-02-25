@@ -1,0 +1,3 @@
+tf–idf is one of the most popular term-weighting schemes today. Definition
+
+    The tf–idf is the product of two statistics, term frequency and inverse document frequency.

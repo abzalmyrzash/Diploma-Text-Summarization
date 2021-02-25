@@ -36,7 +36,7 @@ def _score_sentences(sentences, freqTable) -> dict:
                 else:
                     sentenceValue[sentence[:10]] = freqTable[wordValue]
 
-        sentenceValue[sentence[:10]] = sentenceValue[sentence[:10]] // word_count_in_sentence
+        sentenceValue[sentence[:10]] = sentenceValue[sentence[:10]] / word_count_in_sentence
 
     return sentenceValue
 
