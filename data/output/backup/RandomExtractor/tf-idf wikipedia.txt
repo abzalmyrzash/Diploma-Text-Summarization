@@ -1,0 +1,1 @@
+It is often used as a weighting factor in searches of information retrieval, text mining, and user modeling. A simple way to start out is by eliminating documents that do not contain all three words "the", "brown", and "cow", but this still leaves many documents.

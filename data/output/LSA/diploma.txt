@@ -1,0 +1,117 @@
+Over the course of the diploma project, the following objectives were set and accomplished:
+•	Research related projects carried out in the area of Natural Language Processing and Text Summarization;
+•	Build a dataset with documents in English to summarize;
+•	Analyze and pre-process linguistic parameters that affect key word extraction and summarization;
+•	Implement extractive and abstractive text summarization algorithms;
+•	Test and compare the algorithms using various metrics for evaluating the quality of computer-generated summary. ROUGE results	
+CONCLUSION	
+REFERENCES	
+APPENDIX	
+      Code for Word Frequency algorithm, v0.1.0	
+      Code for single-document TF-IDF algorithm, v0.2.0	
+      Code for multi-document TF-IDF algorithm, v0.2.1	
+      Code for TextRank algorithm, v0.3.0	
+      Code for TextRank algorithm with USE, v.0.3.1	
+      Code for Latent Semantic Analysis, v.0.4.0	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INTRODUCTION
+     In the age where technology has evolved to the point that one can share large amounts of information with millions of people all around the world in a matter of milliseconds, there is an enormous amount of unstructured textual material, including news articles, books, journals, web pages, being written every day. Therefore, the highest priority task in an extractive approach is selecting the right sentences or words for summarization. While in the party, Elizabeth collapsed and was rushed to the hospital.”
+an extractive summarizer would look for the most meaningful words and combine them into a shorter summary. Elizabeth rushed hospital.”
+     In practice, most articles contain much more sentences than that, so most extractive algorithms look for entire sentences instead of singular words. generating entirely new words and sentences that did not exist in the source text. Abstractive summarizer
+     Using the same source text example from extractive summarization as input, an abstractive summarizer would paraphrase some of the words and produce a summary resembling:
+“Elizabeth was hospitalized after attending a party with Peter.”
+     The summarizer did not only correctly identify the main idea, but also rephrased “rushed to the hospital” to “hospitalized”, “Peter and Elizabeth … attend the night party …” to “attending a party with Peter” and compressed two sentences into one sentence. PRE-PROCESSING
+     The basic principle of most extractive summarization algorithms is that they look for key words to identify which sentences are the most suitable to be extracted for a summary. Finding those key words in an unprocessed text is a difficult task for computers, hence input text first needs to be properly pre-processed to summarize effectively. The pre-processing stage of text summarization includes, but is not limited to, cutting out unwanted parts of a text, converting the words to their most basic forms, and separating them using various Natural Language Processing techniques which will be described below. The concept of removing stop words is frequently used in search engine optimization, but they are as important in extractive summarization. Since key words in most of such algorithms are determine by their frequency, the algorithm may select sentences with the most stop words instead of the most meaningful sentences to generate a summary if we do not remove them. Removing punctuation is also critical because punctuation may interfere with stemming, lemmatization, and word and sentence tokenization, and even determining stop words. Depending on the task, these tokens can be sentences, words, characters, and subwords. Tokenization thefore will be classified into 3 types – sentence, word, and subword (n-gram) tokenization. The code of text summarization algorithms in this study will explicitly use only sentence and word tokenization, but that does not mean subword tokenization does not find its use implicitly (e.g. Word tokenization is employed in both extractive and abstractive summarization algorithms, to extract key words and generate a vocabulary of a document or a collection of documents. The task of sentence and word tokenization may first appear as trivial as splitting text by whitespace and punctuation. Code for sentence and word tokenization using NLTK:
+ 
+
+1.3. Stemming and lemmatization
+    For grammatical correctness, sentences are going to contain various forms of the same word, such as “use”, “uses”, and “using”. It is worth noting that using a stemmer may hurt the accuracy of a key word selection algorithm. Word Frequency
+     Word Frequency algorithm is one of the most basic extractive summarization algorithms, and also makes up the first version of the author’s text summarization program. Word Frequency algorithm flowchart
+     After the pre-processing stage of summarization, including steps such as tokenization, stemming, and stop word removal, is done, our main algorithm first calculates the weight of each unique word by counting the number of occurrences of that word (note: this also counts words that are different but have the same root, since all of the words were stemmed or lemmatized in the previous stage) in the document. In the second step, the word weights are used to calculate the score of every sentence in the document. The more “important” (higher-weighted) words a sentence has, the higher its score is, and the likelier it is to be included in the final summary. To implement that, we will tokenize the sentence into words, look up each of those words’ weights from freqTable, and simply calculate their sum. ABSTRACTIVE ALGORITHMS
+     The task of abstractive text summarization is to paraphrase paragraphs and generate entirely new sentences out of words that may not exist in the original document. It feeds on a sequence of sentences, words, characters or other tokens, encodes it, and then decodes it back in order to get a new sequence. In case of machine translation, the input would be original text, and the output is the same text translated to another language:
+ 
+    For Named Entity Recognition (NER), a Seq2Seq model would feed on a sequence of words and generate a sequence of NER tags for every inputed word. Random sampling, 1-search or n-search is performed in each timestep to find the words that will be used to create the summary. The context representation of the source document generated by the encoder is passed to the decoder so it could select words from the target vocabulary to form a summary. Many natural language processing algorithms use N-gram as a base for:
+•	language detection: methods based on the use of N-gram letters give more precision (googlelangdetect);
+•	text generation: a sequence of N-grams such that the end of the i-th N-gram is the beginning of i + 1 N-grams is syntactically related text;
+•	searching for semantic errors: if a word is not used in a given context, then the probability of encountering an N-gram containing this word in this context will be small (or 0), which allows us to conclude about a semantic error. Manual analysis
+     For manual analysis of computer-generated summaries, extractive algorithms (Word Frequency, TF-IDF, TextRank, LSA) were performed on the following source text:
+ 
+Figure x. Sample source text about resilience, part 2
+     The article contains 58 sentences and over 1000 words. ROUGE results
+
+	Word Frequency
+	basic	stem	stem, stop words
+ROUGE-1	0.299	0.317	0.293
+ROUGE-2	0.080	0.084	0.080
+ROUGE-L	0.182	0.188	0.206
+ROUGE-S	0.082	0.091	0.083
+ROUGE-S4	0.071	0.077	0.078
+ROUGE-S9	0.080	0.087	0.088
+Table x. ROUGE evaluation of Word Frequency
+
+	TF-IDF
+	basic	stem	stem, stop words
+ROUGE-1	0.299	0.315	0.290
+ROUGE-2	0.081	0.085	0.082
+ROUGE-L	0.183	0.188	0.207
+ROUGE-S	0.082	0.090	0.081
+ROUGE-S4	0.072	0.077	0.078
+ROUGE-S9	0.080	0.086	0.086
+Table x. ROUGE evaluation of TF-IDF
+
+	TextRank
+	basic	stem	stem, stop words
+ROUGE-1	0.301	0.320	0.290
+ROUGE-2	0.083	0.087	0.082
+ROUGE-L	0.167	0.172	0.179
+ROUGE-S	0.078	0.087	0.076
+ROUGE-S4	0.074	0.079	0.076
+ROUGE-S9	0.080	0.087	0.082
+Table x. ROUGE evaluation of TextRank
+
+
+
+	LSA
+	basic	stem	stem, stop words
+ROUGE-1	0.288	0.305	0.269
+ROUGE-2	0.077	0.080	0.074
+ROUGE-L	0.160	0.164	0.167
+ROUGE-S	0.071	0.079	0.066
+ROUGE-S4	0.068	0.073	0.069
+ROUGE-S9	0.075	0.080	0.074
+Table x. ROUGE evaluation of LSA
+
+	Random Extractor
+	basic	stem	stem, stop words
+ROUGE-1	0.267	0.284	0.244
+ROUGE-2	0.061	0.064	0.058
+ROUGE-L	0.158	0.162	0.170
+ROUGE-S	0.064	0.070	0.056
+ROUGE-S4	0.056	0.060	0.055
+ROUGE-S9	0.063	0.068	0.061
+Table x. ROUGE evaluation of Random Extractor
+
+
+CONCLUSION
+
+Each of the algorithms have its own pros and cons, as listed in the table below. Word Frequency	TF-IDF	TextRank with USE
+The algorithm selects words that are important for the context. Meanwhile, Word Frequency algorithm is probably best suited for online text summarization web applications, where thousands of requests are being processed by relatively small servers.

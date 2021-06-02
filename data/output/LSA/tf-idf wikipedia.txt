@@ -1,0 +1,5 @@
+Inverse document frequency
+
+Because the term "the" is so common, term frequency will tend to incorrectly emphasize documents which happen to use the word "the" more frequently, without giving enough weight to the more meaningful terms "brown" and "cow". Karen Spärck Jones (1972) conceived a statistical interpretation of term-specificity called Inverse Document Frequency (idf), which became a cornerstone of term weighting:
+
+    The specificity of a term can be quantified as an inverse function of the number of documents in which it occurs.

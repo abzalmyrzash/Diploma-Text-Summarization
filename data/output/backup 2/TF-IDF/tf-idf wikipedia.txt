@@ -1,0 +1,3 @@
+To further distinguish them, we might count the number of times each term occurs in each document; the number of times a term occurs in a document is called its term frequency. Definition
+
+    The tf–idf is the product of two statistics, term frequency and inverse document frequency.

@@ -1,0 +1,49 @@
+For the effective implementation of this task, it is required to study existing solutions of approaches in many areas of natural language processing. TABLE OF CONTENTS
+
+INTRODUCTION
+1. ROUGE results	
+CONCLUSION	
+REFERENCES	
+APPENDIX	
+      Code for Word Frequency algorithm, v0.1.0	
+      Code for single-document TF-IDF algorithm, v0.2.0	
+      Code for multi-document TF-IDF algorithm, v0.2.1	
+      Code for TextRank algorithm, v0.3.0	
+      Code for TextRank algorithm with USE, v.0.3.1	
+      Code for Latent Semantic Analysis, v.0.4.0	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INTRODUCTION
+     In the age where technology has evolved to the point that one can share large amounts of information with millions of people all around the world in a matter of milliseconds, there is an enormous amount of unstructured textual material, including news articles, books, journals, web pages, being written every day. Elizabeth rushed hospital.”
+     In practice, most articles contain much more sentences than that, so most extractive algorithms look for entire sentences instead of singular words. Abstractive text summarization attempts to capture the overall meaning by paraphrasing the original text, i.e. Therefore, they can be highly dependent on the training dataset and may not perform well on different articles. hidden in a stemming algorithm). Code for sentence and word tokenization using NLTK:
+ 
+
+1.3. For a family of words such as:
+operate operating operates operation operative operatives operational
+Porter’s stemmer would map all of them to a single word “oper”. TextRank
+     TextRank is an algorithm based on PageRank, which is an algorithm developed by Google co-founders to evaluate the importance of links in a collection of links, each referencing each other. We will use each sentence as a node in a graph, and cosine similarity as the values of their edges. Its size is 𝑛 × 𝑚, where 𝑛 is the number of terms in the document, 𝑚 is the number of sentences. If (𝐴) = 𝑟, then:
+ 
+     From the point of view of semantics, the singular value decomposition of the matrix 𝐴 is interpreted as a partition of the original document into 𝑟 concepts (topics). Each element 𝑣𝑖𝑗 of the matrix 𝑉 reflects the degree of information content of the sentence 𝑗 on the topic 𝑖. Encoder-Decoder Architecture
+    The first component of a Seq2Seq model, the encoder neural network, takes the original document as the input and encodes it as its semantic vector representation. This process is executed in timesteps. 2. [12]
+    1. The forget gate takes 4 inputs from the current input embedding, bias vector, and the ouput of the previous block (hidden state) and memory (cell state). The input of the memory gate is the same as the forget gate with one difference that it takes different bias vectors. 4. [11]
+     This is the basic idea behind the concept of attention which preserves vectors for each word in the sequence, and attends to them individually at each decoding step, thus avoiding the fixed length encoding problem. The ROUGE - N metric is based on calculating the number of 𝑛-grams that occur in both exemplary and automatic abstracts, namely: 
+ 
+where 𝐶𝑜𝑢𝑛𝑡𝑚𝑎𝑡𝑐ℎ(𝑔𝑟𝑎𝑚𝑛) is the number of 𝑛-grams that appear both in the automatic abstract and in the exemplary one; 𝐶𝑜𝑢𝑛𝑡𝑟𝑒𝑓(𝑔𝑟𝑎𝑚𝑛) - the number of 𝑛-grams in the exemplary abstract. 4.2. I”, “riding a bicycle”, “reading books”, “time”, etc. The table shows the correlation between expert estimates and Rouge methods performed on 100 words long summaries of DUC 2001 and DUC 2002 databases. However, for summarization algorithms which require tons of data to train using deep learning, this method is incredibly time-consuming and impractical. Figure 5. 6. Don't leave your dreams to chance. Consider the advice from the American academic and psychologist Angela Duckworth who writes in Grit: The Power of Passion and Perseverance: "Many of us, it seems, quit what we start far too early and far too often. The choice of the best algorithm depends on the purpose of the program. Meanwhile, Word Frequency algorithm is probably best suited for online text summarization web applications, where thousands of requests are being processed by relatively small servers.

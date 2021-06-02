@@ -1,0 +1,30 @@
+Results
+List of graphics (with precise indication of obligatory drawings):
+1. Для эффективной реализации данной задачи требуется изучение существующих решений подходов во многих областях обработки естественных языков. Removing punctuation and stop words	
+1.2. Creating a vocabulary	
+2. Extractive algorithms	
+2.1. Word Frequency	
+2.2. Latent Semantic Analysis	
+3. Sequence-to-Sequence Modeling	
+          3.1.1. Attention mechanism	
+4. Metrics	
+     4.1. CNN/DailyMail dataset	
+6. [1]
+  
+Figure 1. “be”, “want”, “have”)[2]. Stemming is a comparatively rudimentary process that simply cuts off parts of the word in hopes of getting the correct basic form most of the time, and often includes the removal of suffixes and prefixes. EXTRACTIVE ALGORITHMS
+2.1. [6]
+
+
+
+
+
+2.3. A singular value decomposition is applied to the resulting matrix: 𝐴 = 𝑈Σ𝑉𝑇, where 𝑈 = [𝑢𝑖𝑗] is an orthonormal matrix of size 𝑛 × 𝑚, Σ = 𝑑𝑖𝑎𝑔 (𝜎1, 𝜎2, ..., 𝜎𝑚) is a diagonal matrix, 𝑉 = [𝑣𝑖𝑗] is an orthonormal matrix of size 𝑚 × 𝑚. [12]
+
+3.1. [11]
+ 
+Figure x. [12]
+    1. 2)	1-best search, finds one target word with maximum probability. 3)	n-best search finds n outputs having high probabilities. Then: 
+ 
+4.3. TEXT SUMMARIZATION DATASETS
+5.1. ANALYSIS AND RESULTS
+6.1. Assume we want our compression ratio to be about 10%, i.e., the length of summary is 10 times shorter than the length of article. Are you willing to play bigger even if it means repeated failures and setbacks? So become intentional on what you want out of life. Nurture your dreams. Focus on your development and if you want to give up, know what's involved before you take the plunge. Don't leave your dreams to chance. Are you willing to play bigger even if it means repeated failures and setbacks? So become intentional on what you want out of life. Nurture your dreams. Don't leave your dreams to chance. Focus on your development and if you want to give up, know what's involved before you take the plunge. I know one thing for certain: don't settle for less than what you're capable of, but strive for something bigger.

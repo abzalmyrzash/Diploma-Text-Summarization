@@ -1,0 +1,5 @@
+Term Frequency
+
+Suppose we have a set of English text documents and wish to rank them by which document is more relevant to the query, "the brown cow". Inverse document frequency
+
+Because the term "the" is so common, term frequency will tend to incorrectly emphasize documents which happen to use the word "the" more frequently, without giving enough weight to the more meaningful terms "brown" and "cow".

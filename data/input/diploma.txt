@@ -1,0 +1,525 @@
+MINISTRY OF EDUCATION AND SCIENCE OF THE REPUBLIC OF
+KAZAKHSTAN
+“Kazakh-British Technical University” JSC
+Faculty of Information Technology
+Speciality 5B070300 “Information Systems”
+ADMITTED TO DEFENCE
+Dean of FIT,
+Associate Professor, PhD
+___________ R. Suliyev
+“___”___________ 2021
+
+
+EXPLANATORY NOTE
+TO GRADUATION PROJECT (work)
+Theme: “Automatic summarization of articles”
+
+ 
+Authors: 
+____________ A. Myrzash
+“___”____________ 2021
+Major: 
+5B070300  
+“Information Systems”
+
+Supervisor:
+Senior-lecturer
+______________ B. Mukhsimbayev
+“___”____________ 2021 
+Norms Compliance Monitor  
+____________ A. Omarova
+“___”____________ 2021 
+
+
+
+Almaty, 2021
+MINISTRY OF EDUCATION AND SCIENCE OF THE REPUBLIC OF
+KAZAKHSTAN
+“Kazakh-British Technical University” JSC
+Faculty of Information Technology
+Speciality 5B070300 “Information Systems”
+ADMITTED TO DEFENCE
+Dean of FIT,
+Associate Professor, PhD
+___________ R. Suliyev
+“___”___________ 2021
+
+                                
+DIPLOMA PROJECT ASSIGNMENT
+Students: Abzal Myrzash
+Project title: “Automatic summarization of articles”
+Approved by the KBTU order: № _______dated “___” ___________         
+Submission deadline: ____________________
+List of issues addressed in the diploma project or its brief content:
+     1. Text pre-processing
+     2. Extractive algorithms
+     3. Abstractive algorithms
+     4. Metrics
+     5. Text summarization datasets
+     6. Results
+List of graphics (with precise indication of obligatory drawings):
+1.	Tables (x)
+2.	Figures (x)
+
+
+ABSTRACT
+     The given diploma project is dedicated to the research and development of a system for automatic summarization of articles in English. For the effective implementation of this task, it is required to study existing solutions of approaches in many areas of natural language processing. 
+     Over the course of the diploma project, the following objectives were set and accomplished:
+•	Research related projects carried out in the area of Natural Language Processing and Text Summarization;
+•	Build a dataset with documents in English to summarize;
+•	Analyze and pre-process linguistic parameters that affect key word extraction and summarization;
+•	Implement extractive and abstractive text summarization algorithms;
+•	Test and compare the algorithms using various metrics for evaluating the quality of computer-generated summary.
+•	Determine the advantages and disadvantages of each summarization method.
+
+
+
+
+
+
+
+
+
+
+
+
+АҢДАТПА
+     Бұл дипломдық жоба ағылшын тілінде жазылған мақалаларды автоматты түрде қорытындылау жүйесін зерттеуге және әзірлеуге арналған. Бұл тапсырманы тиімді жүзеге асыру үшін табиғи тілді өңдеудің көптеген бағыттарындағы қолданыстағы шешімдердің талдауы қажет.
+     Дипломдық жоба барысында келесі мақсаттар қойылды және орындалды:
+•	Табиғи тілді өңдеу және мәтінді қорытындылау саласында жүргізілген ғылыми жобалар;
+•	Қорытындылау үшін ағылшын тіліндегі құжаттармен мәліметтер қорын құру;
+•	Кілт сөздерді шығаруға және қорытындылауға әсер ететін лингвистикалық параметрлерді талдау және өңдеу;
+•	Экстрактивті және абстрактивті мәтінді қорытындылау алгоритмдерін жүзеге асыру;
+•	Алгоритмдерді компьютерде құрастырылған қысқаша мазмұндама сапасын бағалаудың әртүрлі көрсеткіштерін қолдана отырып сынау және салыстыру.
+•	Әр қорытындылау әдісінің артықшылықтары мен кемшіліктерін анықтау.
+
+
+
+
+
+
+
+
+
+
+
+АННОТАЦИЯ
+     Данный дипломный проект посвящен исследованию и разработке системы автоматического резюмирования статей на английском языке. Для эффективной реализации данной задачи требуется изучение существующих решений подходов во многих областях обработки естественных языков.
+     В ходе дипломного проекта были поставлены и решены следующие задачи:
+•	исследовательские проекты в области обработки естественного языка и реферирования текстов;
+•	создать набор со статьями на английском языке для обобщения;
+•	анализировать и предварительно обрабатывать лингвистические параметры, влияющие на извлечение ключевых слов и резюмирование;
+•	реализовать экстрактивные и абстрактные алгоритмы резюмирования текста;
+•	протестировать и сравнить алгоритмы с использованием различных показателей для оценки качества компьютерного изложения;
+•	выяснить преимущества и недостатки каждого из методов реферирования.
+
+
+
+
+
+
+
+
+
+
+
+
+
+TABLE OF CONTENTS
+
+INTRODUCTION
+1. Text pre-processing	
+1.1. Removing punctuation and stop words	
+1.2. Tokenization	
+1.3. Stemming and lemmatization	
+1.4. Creating a vocabulary	
+2. Extractive algorithms	
+2.1. Word Frequency	
+2.2. TF-IDF	
+2.3. TextRank	
+     2.4. Latent Semantic Analysis	
+3. Abstractive algorithms
+     3.1. Sequence-to-Sequence Modeling	
+          3.1.1. Encoder-Decoder Architecture	
+          3.1.2. Long Short Term Memory	
+          3.1.3. Beam Search	
+          3.1.4. Attention mechanism	
+4. Metrics	
+     4.1. ROUGE-N	
+     4.2. ROUGE-L	
+     4.3. ROUGE-S	
+     4.4. Correlation with expert assessments	
+5. Text summarization datasets	
+     5.1. Manual document collection	
+     5.2. CNN/DailyMail dataset	
+6. Analysis and results	
+     6.1. Manual analysis	
+     6.2. ROUGE results	
+CONCLUSION	
+REFERENCES	
+APPENDIX	
+      Code for Word Frequency algorithm, v0.1.0	
+      Code for single-document TF-IDF algorithm, v0.2.0	
+      Code for multi-document TF-IDF algorithm, v0.2.1	
+      Code for TextRank algorithm, v0.3.0	
+      Code for TextRank algorithm with USE, v.0.3.1	
+      Code for Latent Semantic Analysis, v.0.4.0	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INTRODUCTION
+     In the age where technology has evolved to the point that one can share large amounts of information with millions of people all around the world in a matter of milliseconds, there is an enormous amount of unstructured textual material, including news articles, books, journals, web pages, being written every day. Most of those documents often contain text that does not provide any meaningful data. For example, people who want to learn about the latest news frequently do not have time to read the full text of a news article. It would be more convenient for the readers to get a quick glance at recent events or to know whether it is worth reading the full text, if every article had a short version, or a summary, of itself.
+     However, since manual summarization requires humans to read the entirety of a text piece one or more times to extract its key ideas, more academics and IT specialists have been taking interest in the development of automatic text summarization algorithms. The goal of automatic text summarization is to produce a succinct summary with no human aid while maintaining the key ideas of the source text document.
+     In the time of writing this study, methods of automatic text summarization can be broadly classified by its input type, output type, and purpose.[1]
+  
+Figure 1. Classification of text summarization methods
+     1. Extractive text summarization methods generate a summary by extracting several main parts of the source text, such as sentences or phrases with the most important keywords. The extracted content is generally not paraphrased or modified in any way. Therefore, the highest priority task in an extractive approach is selecting the right sentences or words for summarization.
+
+ 
+Figure 2. Extractive summarizer
+     For instance, given a short souce text consisting of two sentences:
+“Peter and Elizabeth took a taxi to attend the night party in the city.
+While in the party, Elizabeth collapsed and was rushed to the hospital.”
+an extractive summarizer would look for the most meaningful words and combine them into a shorter summary. Its output would be similar to:
+“Peter and Elizabeth attend party city. Elizabeth rushed hospital.”
+     In practice, most articles contain much more sentences than that, so most extractive algorithms look for entire sentences instead of singular words. That way, it is also more readable and comprehensible since grammar is preserved.
+     The main advantages of extractive text summarization are that they don’t require deep understanding and prior knowledge of the topic, and they are relatively simple to develop. However, although the extracted sentences may perfectly convey the key ideas of the original document, they are often not linked to each other in any grammatical or logical way.
+     2. Abstractive text summarization attempts to capture the overall meaning by paraphrasing the original text, i.e. generating entirely new words and sentences that did not exist in the source text. This results in a more logically consistent and higher quality summary, more akin to a human-made summary.
+ 
+Figure 3. Abstractive summarizer
+     Using the same source text example from extractive summarization as input, an abstractive summarizer would paraphrase some of the words and produce a summary resembling:
+“Elizabeth was hospitalized after attending a party with Peter.”
+     The summarizer did not only correctly identify the main idea, but also rephrased “rushed to the hospital” to “hospitalized”, “Peter and Elizabeth … attend the night party …” to “attending a party with Peter” and compressed two sentences into one sentence.
+     Because abstractive methods require a deeper understanding of text, they tend to be more complex to build. Advanced neural networks using deep learning need to be constructed and trained on thousands of documents. Therefore, they can be highly dependent on the training dataset and may not perform well on different articles.
+
+
+
+
+
+1. PRE-PROCESSING
+     The basic principle of most extractive summarization algorithms is that they look for key words to identify which sentences are the most suitable to be extracted for a summary. Finding those key words in an unprocessed text is a difficult task for computers, hence input text first needs to be properly pre-processed to summarize effectively. The pre-processing stage of text summarization includes, but is not limited to, cutting out unwanted parts of a text, converting the words to their most basic forms, and separating them using various Natural Language Processing techniques which will be described below. For implementation of pre-processing, we will be primarily using a python library called Natural Language Toolkit (NLTK).
+1.1. Removing punctuation and stop words
+     Stop words are words which are common but provide very little or no lexical meaning. They are essential in structuring sentences, expressing the mood of the speaker, but unnecessary in automatic summing up. Stop words in the English language include function words, such as articles (“a”, “an”, “the”), pronouns (e.g. “I”, “you”, “he”, “she”, “it”), prepositions (e.g. “at”, “on”, “in”), and even some common lexical words (e.g. “be”, “want”, “have”)[2].
+     The concept of removing stop words is frequently used in search engine optimization, but they are as important in extractive summarization. Since key words in most of such algorithms are determine by their frequency, the algorithm may select sentences with the most stop words instead of the most meaningful sentences to generate a summary if we do not remove them.
+     Removing punctuation is also critical because punctuation may interfere with stemming, lemmatization, and word and sentence tokenization, and even determining stop words.
+     For pre-processing, including this step, we will be primarily using the Natural Language ToolKit (NLTK) library in Python. Code for removing stop words and punctuation looks similar to below: 
+ 
+
+1.2. Tokenization
+     Tokenization is one of the most crucial steps of pre-processing text documents that need to be done before using them in various applications of NLP. Aside from text summarization, it is a fundamental part of models such as Count Vectorizer and advanced deep learning-based Transformers. 
+     The main goal of tokenization is to divide a document into smaller components called tokens. Depending on the task, these tokens can be sentences, words, characters, and subwords. Tokenization thefore will be classified into 3 types – sentence, word, and subword (n-gram) tokenization. The code of text summarization algorithms in this study will explicitly use only sentence and word tokenization, but that does not mean subword tokenization does not find its use implicitly (e.g. hidden in a stemming algorithm).[3]
+     Sentence tokenization will be implemented mostly in extractive summarization algorithms, because to determine which sentences to select for a summary, the computer needs to first understand the boundaries of each sentence. Word tokenization is employed in both extractive and abstractive summarization algorithms, to extract key words and generate a vocabulary of a document or a collection of documents.
+     The task of sentence and word tokenization may first appear as trivial as splitting text by whitespace and punctuation. However, the nuances of English and many other languages, such as quotations, abbreviations and contractions make the process quite difficult to implement manually. For instance, the sentence:
+“I’ve lived in the U.S.A. for 5 years.”
+ will be separated into 4 meaningless sentences:
+1) “I’ve lived in the U.”; 2) “S.”; 3) “A.”; 4) “for 5 years.”
+if we simply split the text by full stops. Most of such nuances are overcome in the Natural Language ToolKit (NLTK) library in Python.
+     Code for sentence and word tokenization using NLTK:
+ 
+
+1.3. Stemming and lemmatization
+    For grammatical correctness, sentences are going to contain various forms of the same word, such as “use”, “uses”, and “using”. Furthermore, families of words with slightly different meanings can be derived from just one root word, for example: “digit”, “digital”, and “digitalize”. For the task of extracting key words, it would be unreasonable to count all the gramatical forms and derivational relatives of the same word separately from each other. For this reason, NLP techniques such as stemming and lemmatization have been developed.[4]
+     Both stemming and lemmatization pursue a goal of reducing inflectional or derivationally related forms of a word to their common root form. For instance: 
+flies, flew, flown  fly
+wing, wings, wing’s, wings’  wing
+     Applying the same process to an entire sentence: 
+Pterodactyls flew thanks to their wings’ shape  
+pterodactyl fly thank to they wing shape
+     However, the method of achieving the goal is what sets them apart. Stemming is a comparatively rudimentary process that simply cuts off parts of the word in hopes of getting the correct basic form most of the time, and often includes the removal of suffixes and prefixes. Lemmatization aims to remove only inflectional endings using vocabulary and morphological analysis, ending up with the base or dictionary form of a word, known as the lemma. When encountered with the token “broke”, a stemming algorithm might jut chop off “oke” and return “br”, while a lemmatizer would return “break” (verb) or “broke” (adj. meaning “without money”) depending on the context. Another difference is that stemming most often works with derivationally related words, while lemmatization usually results in changing only inflectional forms of a lemma. Additional plug-in components or libraries are commonly used for stemming and lemmatization, such as NLTK in Python.
+     One of the most popular and effective algorithms that stem English documents is Porter’s stemmer. The algorithm consists of 5 stages of word reduction, applied successively. Within each stage, there is a different set of rules. The first stage performs mapping using this group of rules:
+
+ 
+     The later stages measure the length of the word before applying a certain rule. For instance, the rule:
+ 
+maps the word “movement” to “mov”, but not “cement” to “c”.
+     It is worth noting that using a stemmer may hurt the accuracy of a key word selection algorithm. For a family of words such as:
+operate operating operates operation operative operatives operational
+Porter’s stemmer would map all of them to a single word “oper”. Since the verb “operate” and its derived forms are common and have different meanings based on context, a stemmer could lose important information in phrases such as:
+operational research
+operating system
+operatived dentistry
+     For such cases, a lemmatizer would be more useful than stemming, since it removes only inflectional endings (e.g. -s, -es, -’s, -ing) of a word. However, since lemmatizers need to use extensive vocabulary, thoroughly analyze the morphology of words, the extra cost in computational power is not worth the slight theoretical increase in the quality of key word extraction.
+
+2. EXTRACTIVE ALGORITHMS
+2.1. Word Frequency
+     Word Frequency algorithm is one of the most basic extractive summarization algorithms, and also makes up the first version of the author’s text summarization program. The principle of its workings is described in the following flow chart.
+ 
+Figure x. Word Frequency algorithm flowchart
+     After the pre-processing stage of summarization, including steps such as tokenization, stemming, and stop word removal, is done, our main algorithm first calculates the weight of each unique word by counting the number of occurrences of that word (note: this also counts words that are different but have the same root, since all of the words were stemmed or lemmatized in the previous stage) in the document. The reasoning behind assigning weights to words depending on their frequency is that words that occur the most are most likely to be topic words, therefore they are most important to generate a summary.
+     During implementation, in order to save each word weight, we create a dictionary called freqTable, which is essentially a table with one column storing the words themselves, and the second column storing their frequencies, or in other words how many times they occur in the document.
+      
+     In the second step, the word weights are used to calculate the score of every sentence in the document. The more “important” (higher-weighted) words a sentence has, the higher its score is, and the likelier it is to be included in the final summary.
+     To implement that, we will tokenize the sentence into words, look up each of those words’ weights from freqTable, and simply calculate their sum.
+     
+     Finally, to generate the summary, we will calculate the average sentence score, and multiply it with a certain coefficient (for example, 1.5) to use as a minimum score threshold for a summary sentence.
+
+
+2.2. TF-IDF
+     Calculating the relevance of a word based on just how common it is in a document can be unreliable. For example, the algorithm may choose widespread auxiliary words such as “can”, “have”, “however” over the word “intelligence” in an article about AI. In order to solve this issue, Karen Spärck Jones introduced a numerical statistic called Term Frequency – Inverse Document Frequency (TF-IDF) in 1972.
+     The formula it uses is term frequency multiplied by inverse document frequency.
+ 
+     The term frequency of a word is equal to the number of times it is repeated in a document divided by the total number of words. This numeric is supposed to increase the value of words that are common, with the same reasoning as in the first algorithm.
+ 
+     The second part of TF-IDF is inverse document frequency. It equates to the logarithm of the number of documents in a collection over the number of documents where the word occurs. The intention behind this is to counteract the term frequency of prevalent words that do not relate to the topic of the document. It is similar to the removal of stop words, terms which are frequent yet don’t serve any lexical meaning. The choice of the logarithm base in IDF has no effect on the outcome of the summarization algorithm, because the weights of all the terms will simply be scaled proportionally.
+     The flow of the whole algorithm is the same as the previous Word Frequency algorithm, except the word weight calculation by word frequency step is replaced by the calculation of TF-IDF values. After that, sentence scores will be calculated as the sum of TF-IDF values of words in the sentence.[6]
+
+
+
+
+
+2.3. TextRank
+     TextRank is an algorithm based on PageRank, which is an algorithm developed by Google co-founders to evaluate the importance of links in a collection of links, each referencing each other.[9] The more citations a link has, the more important it is considered by PageRank, and the likelier it is to appear at the top of search engine results.
+ 
+Figure x: PageRank graph example
+     In the example graph above, web page B has the most weight assigned, since many of the other web pages contain a reference to it. Page C comes in the second place, since the most important page B references it, even though other pages do not. Page A has the least weight because it is referenced only by D, which also has a small weight.
+     The PageRank algorithm calculates the weights of each page using this formula: [8]
+ 
+     TextRank works the exact same way, except the nodes are sentences instead of pages and their edges are their mutual similarity instead of links or references. The similarity is calculated using cosine similarity and the Universal Sentence Embedding encoder model provided by Tensorflow.
+     Universal Sentence Embeddings encode paragraphs, sentences, and words into numerical vectors.[7] One of the main features of this module is that words with similar meanings (i.e. synonyms) are encoded with approximately the same numerical value. This will be useful for calculating similarity between sentences. For implementation, we are using the “universal-sentence-encoder” from a Python library called TensorFlow.
+ 
+Figure x: sentence encoding using Universal Sentence Embeddings
+     Cosine similarity will then be used to measure the resemblance between each sentence.[9] It is equal to the cosine of angle between each sentence vector representation. We will use each sentence as a node in a graph, and cosine similarity as the values of their edges. Then, the composed graph will be used by the TextRank to rank the sentences with the most “links” or similarity to other sentences.
+ 
+Figure x: sentence similarity matrix
+2.4. Latent Semantic Analysis
+     Latent Semantic Analysis (LSA) is a popular NLP technique that analyses relationships between a set of documents or sentences and their terms using Singular Value Decomposition (SVD) of a matrix.[10]
+     Below are the steps of the text summarization algorithm using LSA: 
+     1. Let A be the matrix of a term-sentence obtained from the original document. Its size is 𝑛 × 𝑚, where 𝑛 is the number of terms in the document, 𝑚 is the number of sentences. The element 𝑎𝑖𝑗 of this matrix is equal to the frequency of occurrence of the term 𝑖 in the text if this term occurs in the sentence, and 0 otherwise.
+ 
+Figure x. Singular Value Decomposition (reduced form)
+     2. A singular value decomposition is applied to the resulting matrix: 𝐴 = 𝑈Σ𝑉𝑇, where 𝑈 = [𝑢𝑖𝑗] is an orthonormal matrix of size 𝑛 × 𝑚, Σ = 𝑑𝑖𝑎𝑔 (𝜎1, 𝜎2, ..., 𝜎𝑚) is a diagonal matrix, 𝑉 = [𝑣𝑖𝑗] is an orthonormal matrix of size 𝑚 × 𝑚. If (𝐴) = 𝑟, then:
+ 
+     From the point of view of semantics, the singular value decomposition of the matrix 𝐴 is interpreted as a partition of the original document into 𝑟 concepts (topics). Each element 𝑣𝑖𝑗 of the matrix 𝑉 reflects the degree of information content of the sentence 𝑗 on the topic 𝑖. In this case, the value 𝜎𝑖 of the matrix Σ reflects the degree of importance of the topic 𝑖 in the original document.
+     3. Each sentence of the source document 𝑠𝑘 is assigned a weight by the formula:
+ 
+     This way more weight is given to proposals that are most informative for one of the topics of the document, while taking into account the degree of importance of the concept in the document.
+     4. The values of the weights of sentences are ordered in descending order, and sentences corresponding to the first 𝑙 values are included in the abstract, where 𝑙 is the desired number of sentences in the abstract.
+
+
+3. ABSTRACTIVE ALGORITHMS
+     The task of abstractive text summarization is to paraphrase paragraphs and generate entirely new sentences out of words that may not exist in the original document. Since such approach requires deeper semantic analysis and vast real-word knowledge, it is considered a much more difficult task for a computer than its extractive counterpart. However, for the extra cost of development, abstractive algorithms usually yield a higher-quality summary, i.e., a more accurate representation of a human-generated summary.
+     Abstractive approaches divide into two main categories: structured and semantic-based. Structured abstractive methods encode important features of text employing many types of data structures, including ontology, tree, lead and body phrases, and template and rule-based schemas. Semantic-based text summarization relies on the information representation of a document, and uses the multi-modal semantic, information item and semantic graph-base methods.
+     Due to the complexity of semantic analysis, abstractive summarization requires more advanced machine learning and natural language processing techniques, including deep learning. Deep learning is heavily employed to analyse complex problems and facilitate the process of decision-making in various tasks. Similar to the structure of the human brain, deep learning models consist of several abstraction layers with many neurons that each attempt to extract features from the input layers. In this paper, we will employ the Sequence-to-Sequence model with Long Short Term Memory neural layers, popularly used in various NLP applications, to generate abstractive multi-sentence summaries for documents. [12]
+
+3.1. Sequence-to-Sequence Modeling
+    A Sequence-to-Sequence (Seq2Seq) model is a machine learning model most commonly used in language process applications such as neural machine translation, named entity recognition, sentiment classification, and text summarization. It was originally developed by Google for translation, and later it has seen its uses in symbolic integration and resolution for differential equations by Facebook in 2019, and Google’s chatbot called Meena in 2020. It feeds on a sequence of sentences, words, characters or other tokens, encodes it, and then decodes it back in order to get a new sequence.
+    In case of machine translation, the input would be original text, and the output is the same text translated to another language:
+ 
+    For Named Entity Recognition (NER), a Seq2Seq model would feed on a sequence of words and generate a sequence of NER tags for every inputed word.
+ 
+    A Seq2Seq model for text summarization consists of two major components: encoder and decoder. This type of Seq2Seq modeling architecture is known as Encoder-Decoder Architure, which will be described in the next section. [11]
+ 
+Figure x. Brief description of the encoder-decoder architecture
+
+3.1.1. Encoder-Decoder Architecture
+    The first component of a Seq2Seq model, the encoder neural network, takes the original document as the input and encodes it as its semantic vector representation. This process is executed in timesteps. During each timestep, a word is fed into the encoder one by one along with the previous timestep’s internal memory and hidden states (if it is the first timestep, the states are randomly initialized). The output memory and hidden states is fed into the next timestep as input along with the next word of the sequence. The process is repeated until all the tokens of the sequence are fed in.
+     The hidden state of the encoder’s last timestep is then passed as input hidden states of the decoder. The decoder is a neural network that reads the encoder’s internal states and is trained to predict the next word of the output sequence given the previous words.     The summary in the train data is the target sequence in our Seq2Seq summarization model (sequence which the decoder attempts to predict).
+     The decoder training process: [11]
+    1. <SOS> (start of sequence) and <EOS> (end of sequence) tokens are added to the target sequence before calculating the cost function of the encoder and decoder.
+    2. Encoder’s last hidden states are fed into the decoder.
+    3. The decoder aims to predict the first word of a sequence with a certain probability when the <SOS> token is fed into it, then the output word becomes the input word of the next decoder timestep.
+    4. The process is repeated until the decoder predicts the <EOS> token.
+    5. Random sampling, 1-search or n-search is performed in each timestep to find the words that will be used to create the summary.
+     Since exploding/vanishing gradient problem is even more prevalent in Seq2Seq models than in convolutional and fully connected neural networks, the most commonly used models are Long Short Term Memory and Gated Recurrent Unit.[12]
+ 
+Figure x. Sequence-to-sequence; the last hidden state of the encoder is fed as input to the decoder with the symbol EOS
+
+
+3.1.2. Long Short Term Memory
+    Long Short Term Memory (LSTM) is a type of Recurrent Neural Network (RNN) that was proposed by Hochreiter in 1997. It solves the problem of vanishing gradients by preserving the memory of the previous cells for different amounts of time. Each repeating unit of a LSTM network consists of 4 gates: input, memory, forget and output.[12]
+    1. The input gate is first assigned a vector consisting of random values. In the subsequent timesteps, the input gate becomes the output cell (memory) state of the previous step. Each element of the input gate vector is multiplied by the corresponding elements of the forget gate vector. The product of the input and forget gates is then added to the current memory gate output.
+    2. The forget gate includes one neural layer with a sigmoid activation function. The gate determines whether the previous state information is to be remembered or forgotten based on the output of the sigmoid function: the closer it is to 1, the more of the preceding information will be preserved, and vice versa. For example, it may be necessary to remember the gender of the subject to produce proper pronouns in the following sentences, so the forget gate will be trained to give the value of 1 to that information, but when the topic shifts to a new subject it must change to 0. The forget gate takes 4 inputs from the current input embedding, bias vector, and the ouput of the previous block (hidden state) and memory (cell state).
+    3. The input of the memory gate is the same as the forget gate with one difference that it takes different bias vectors. Its purpose is to control the amount of influence that old memory has on new information. The new information itself is formed using a separate network with a tanh activation function. After that, the output of the network is element-wise multiplied with the previous hidden state and added to the old information to create the new information.
+    4. Finally, the output gate uses input vector, new information, previous hidden state, and another bias vector to determine the amount of new information that is passed as old information to the next LSTM cell.  The output of the sigmoid function is multiplied by the tanh of the new information to produce the output of the current block.
+ 
+Figure x. LSTM unit architecture
+ 
+ 
+Figure x. gates of an LSTM unit: (a) input gate, (b) forget gate, (c) memory gate, (d) output gate
+     The concrete structure of each gate of an LSTM unit is illustrated in the figure above. The gates can also be described using these mathematical equations:
+ 
+where:
+•	xt – the input vector of timestep t,
+•	it – the input gate of timestep t,
+•	ft – the forget gate of timestep t,
+•	ct – the memory gate, or the cell state of timestep t,
+•	ot – the output gate of timestep t,
+•	ht – the hidden state of timestep t,
+•	Wxi – weight matrix of size |xt| × |it|,
+•	bi – bias vector of size i,
+•	σ – sigmoid activation function,
+•	tanh – hyperbolic tangent activation function
+3.1.3. Beam Search
+     From what we have discussed, the encoder-decoder architecture allows the computer to learn the probabilities of each word in the target vocabulary given the source vocabulary and sequence. The context representation of the source document generated by the encoder is passed to the decoder so it could select words from the target vocabulary to form a summary. There are three ways to generate a summary based on the decoder’s output probabilities for each hypothesis:[12]
+1)	Random sampling selects a random output from the target vocabulary each with the same probability as the probability learned from the decoder.
+2)	1-best search, finds one target word with maximum probability.
+3)	n-best search finds n outputs having high probabilities.
+     In many sequence-to-sequence learning models, a common variant of the 1-best search known as beam search is used to find the best translation for the given source sequence. 
+     Beam search is different from greedy search in that a particular number (say b) of hypotheses are selected as candidates while decoding each token instead of only the best one. This number b is usually referred to as the beam size or beam width. A noteworthy feature of the beam search algorithm is that as we increase the beam width, the decoder gets better at finding shorter sentences, which is advantageous for summarization. Since adding a word at each step is equivalent to multiplying the probabilities of each word, which are always below 1, the probability of the whole sequence progressively diminishes as the length of the candidate hypothesis increases. This phenomenon is also known as length bias of the beam search algorithm. The figure below illustrates the process of a simple 2-wide beam-search with 4 tokens.
+ 
+Figure x: Beam search with beam width 2
+3.1.4. Attention Mechanism
+     One of the core weaknesses of the basic Seq2Seq architecture is that the size of the encoder context vector always remains fixed, no matter the length of the original input sequence. When given a long sequence, the encoder may fail to capture its entire meaning and generate incomplete summaries. We could attempt to change the context vector to have variable length to overcome this problem.[11]
+     This is the basic idea behind the concept of attention which preserves vectors for each word in the sequence, and attends to them individually at each decoding step, thus avoiding the fixed length encoding problem. As the number of vectors available to the decoder for referencing is equal to the length of the input sequence, longer sentences can have many vectors which makes for an effective representation when compared to a fixed size context vector.
+     The attention mechanism is employed at each output word to calculate the weight between the output word andevery input word; the weights add to one. The advantage of using weights is to show which input word must receive attention with respect to the output word. The weighted average of the last hidden layers of the decoder in the current step is calculated after passing each input word and fed to the softmax layer along the last hidden layers.
+4. METRICS
+     To assess the quality of the automatic summarization algorithm, a set of documents with abstracts attached to them, called exemplary, is required. For convenience, abstracts obtained with the help of algorithms will be called automatic. A package for assessing the quality of algorithms for automatic text summarization ROUGE (Recall-Oriented Understudy for Gisting Evaluation) was proposed, the metrics of which have a high correlation with human estimates.[15] Let us consider the main metrics of this package in more detail.
+4.1 ROUGE-N
+     N-gram is a subsequence of length N of elements of some sequence. Examples of N-grams of words:
+•	Unigrams - car, refrigerator, bed, …
+•	Bigrams - beautiful car, big refrigerator, comfotable bed, ...
+•	Trigrams – I like football, long and tedious, ...
+     Due to the fact that a language is not a random set of words, N-grams are a good characteristic of texts and language. Many natural language processing algorithms use N-gram as a base for:
+•	language detection: methods based on the use of N-gram letters give more precision (googlelangdetect);
+•	text generation: a sequence of N-grams such that the end of the i-th N-gram is the beginning of i + 1 N-grams is syntactically related text;
+•	searching for semantic errors: if a word is not used in a given context, then the probability of encountering an N-gram containing this word in this context will be small (or 0), which allows us to conclude about a semantic error.
+
+     The ROUGE - N metric is based on calculating the number of 𝑛-grams that occur in both exemplary and automatic abstracts, namely: 
+ 
+where 𝐶𝑜𝑢𝑛𝑡𝑚𝑎𝑡𝑐ℎ(𝑔𝑟𝑎𝑚𝑛) is the number of 𝑛-grams that appear both in the automatic abstract and in the exemplary one; 𝐶𝑜𝑢𝑛𝑡𝑟𝑒𝑓(𝑔𝑟𝑎𝑚𝑛) - the number of 𝑛-grams in the exemplary abstract.
+     In this work, the ROUGE - 1 and ROUGE - 2 metrics are used, based on the calculation of the number of unigrams and bigrams, respectively.
+
+4.2. ROUGE–L
+     ROUGE-L is another commonly used metric that is based on the Longest Common Subsequence (LCS) of the exemplary and automatic summaries. LCS is simply the longest subsequence that is repeated without breaks in both input sequences. For example, consider the following sequences:
+     1) “My name is John. I enjoy riding a bicycle and reading books in my free time.”
+     2) “I am John. I love riding a bicycle and reading books in my spare time.”
+     There are common subsequences such as “John. I”, “riding a bicycle”, “reading books”, “time”, etc. However, the longest of them is “riding a bicycle and reading books in my”, which is 8 words long. This is what is known as the LCS.
+     Let 𝑋 be a sequence of words of an exemplary abstract of length 𝑛, 𝑌 be a sequence of words of an automatic abstract of length 𝑚, 𝐿𝐶𝑆 (𝑋, 𝑌) is the length of the longest common subsequence between 𝑋 and 𝑌. Then: 
+ 
+4.3. ROUGE-S
+     ROUGE-S is a metric that calculates the accuracy using gaps between bigrams. Let 𝑆𝐾𝐼𝑃2(𝑋, 𝑌) be the number of bigrams with gaps that occur both in a model abstract 𝑋 of length 𝑛 (words) and in an automatic abstract 𝑌 of length 𝑚. Then:
+ 
+4.4. Correlation with expert assessments
+     We can determine how well a particular ROUGE method works by comparing the scores issued by ROUGE with those of experts. The table shows the correlation between expert estimates and Rouge methods performed on 100 words long summaries of DUC 2001 and DUC 2002 databases.
+ 
+Table x. Correlation between ROUGE and expert assessment [15]
+     It follows from the above table that the ROUGE-SU and ROUGE-W algorithms allow for a fairly accurate assessment of the quality of a resume. Also, it is worth paying attention to ROUGE-2, as it has high accuracy with low computational complexity, which makes it attractive when evaluating a large number of summaries.
+
+5. TEXT SUMMARIZATION DATASETS
+5.1. Manual document collection
+     Before developing text summarization algorithms, it is essential to first get a collection of articles to be able to test our software. The simplest way to do that would be to manually search for any theme that comes to mind on the Internet and collect the suggested articles in a folder. 
+ Figure 4. Manual document collection example
+     This solution is suitable and quite useful if we want to assess the quality of a computer-generated summary ourselves. However, for summarization algorithms which require tons of data to train using deep learning, this method is incredibly time-consuming and impractical. It is further complicated by the fact that deep learning algorithms also need target data, or in this case summaries for documents, and it is hard to find an already written summary for a random article on the Internet.
+     Thankfully, there exist a lot of pre-built datasets with both original articles and their summaries. Some of the largest include CNN / Daily Mail and GigaWord.
+
+5.2. CNN / Daily Mail dataset
+     The CNN / Daily Mail (created by Hermann et al., 2015) dataset contains more than 300 000 news articles written by journalists from CNN and Daily Mail, and each article contains multiple highlights at the end which can be used as a summary. Meanwhile, GigaWord provides articles with only single-sentence summaries. We want our summarization algorithms’ output to be as flexible as possible, so our dataset of choice is CNN / Daily Mail.
+     In the screenshot of a sample CNN news story below, each summary sentence is denoted by a preceding “@highlight” token. Every other news story in the dataset is formatted in the same way.
+ 
+Figure 5. CNN / Daily Mail dataset article sample
+
+      On average, each CNN / Daily Mail article is made of 781 tokens and its respective summary comprises 3.75 sentences or 56 tokens[14]. Therefore, the compression ratio is approximately 7.2%. Using the scripts provided by Abigail See on Github[13], the dataset will be tokenized and split into 287 226 training, 13 368 vaildation and 11 490 test article-summary pairs respectively. Each of the subdatasets are further divided into chunks with 1000 pairs and processed into .bin files, so that they can be utilized by Tensorflow code. Another product of the script is a vocabulary file that contains all of the words used in the dataset, totalling to almost 200 000 words, sorted in descending order of frequency.
+
+
+
+
+6. ANALYSIS AND RESULTS
+6.1. Manual analysis
+     For manual analysis of computer-generated summaries, extractive algorithms (Word Frequency, TF-IDF, TextRank, LSA) were performed on the following source text:
+ 
+Figure x. Sample source text about resilience, part 1
+
+
+
+ 
+Figure x. Sample source text about resilience, part 2
+     The article contains 58 sentences and over 1000 words. The main idea of the document is about striving for the best and staying resilient no matter what hardships and failures you encounter.
+     Assume we want our compression ratio to be about 10%, i.e., the length of summary is 10 times shorter than the length of article. By performing simple division, we figure out that the length of automatic abstract is 58 / 10 = 5.8 ≈ 6 sentences.
+     
+     Summary generated by Word Frequency:
+Where are you settling in your life right now? Are you willing to play bigger even if it means repeated failures and setbacks? So become intentional on what you want out of life. Nurture your dreams. Focus on your development and if you want to give up, know what's involved before you take the plunge. Don't leave your dreams to chance.
+Figure x. Summary generated by Word Frequency
+     Summary generated by TF-IDF:
+Each person has a different mindset that decides their outcome. Where are you settling in your life right now? Are you willing to play bigger even if it means repeated failures and setbacks? So become intentional on what you want out of life. Nurture your dreams. Don't leave your dreams to chance.
+Figure x. Summary generated by TF-IDF
+     Summary generated by TextRank:
+To be honest, I don't have the answers. However, it's important not to be discouraged by failure when pursuing a goal or a dream, since failure itself means different things to different people. Same failure, yet different responses. I know one thing for certain: don't settle for less than what you're capable of, but strive for something bigger. It's a fact, if you don't know what you want you'll get what life hands you and it may not be in your best interest, affirms author Larry Weidel: "Winners know that if you don't figure out what you want, you'll get whatever life hands you." Focus on your development and if you want to give up, know what's involved before you take the plunge.
+Figure x. Summary generated by TextRank
+     Summary generated by LSA:
+Those Who Are Resilient Stay In The Game Longer
+"On the mountains of truth you can never climb in vain: either you will reach a point higher up today, or you will be training your powers so that you will be able to climb higher tomorrow." To be honest, I don't have the answers. Consider the advice from the American academic and psychologist Angela Duckworth who writes in Grit: The Power of Passion and Perseverance: "Many of us, it seems, quit what we start far too early and far too often. I know one thing for certain: don't settle for less than what you're capable of, but strive for something bigger. It's a fact, if you don't know what you want you'll get what life hands you and it may not be in your best interest, affirms author Larry Weidel: "Winners know that if you don't figure out what you want, you'll get whatever life hands you." Similarly, there are no assurances even if you're an overnight sensation, to sustain it for long, particularly if you don't have the mental and emotional means to endure it.
+Figure x. Summary generated by LSA
+
+6.2. ROUGE results
+
+	Word Frequency
+	basic	stem	stem, stop words
+ROUGE-1	0.299	0.317	0.293
+ROUGE-2	0.080	0.084	0.080
+ROUGE-L	0.182	0.188	0.206
+ROUGE-S	0.082	0.091	0.083
+ROUGE-S4	0.071	0.077	0.078
+ROUGE-S9	0.080	0.087	0.088
+Table x. ROUGE evaluation of Word Frequency
+
+	TF-IDF
+	basic	stem	stem, stop words
+ROUGE-1	0.299	0.315	0.290
+ROUGE-2	0.081	0.085	0.082
+ROUGE-L	0.183	0.188	0.207
+ROUGE-S	0.082	0.090	0.081
+ROUGE-S4	0.072	0.077	0.078
+ROUGE-S9	0.080	0.086	0.086
+Table x. ROUGE evaluation of TF-IDF
+
+	TextRank
+	basic	stem	stem, stop words
+ROUGE-1	0.301	0.320	0.290
+ROUGE-2	0.083	0.087	0.082
+ROUGE-L	0.167	0.172	0.179
+ROUGE-S	0.078	0.087	0.076
+ROUGE-S4	0.074	0.079	0.076
+ROUGE-S9	0.080	0.087	0.082
+Table x. ROUGE evaluation of TextRank
+
+
+
+	LSA
+	basic	stem	stem, stop words
+ROUGE-1	0.288	0.305	0.269
+ROUGE-2	0.077	0.080	0.074
+ROUGE-L	0.160	0.164	0.167
+ROUGE-S	0.071	0.079	0.066
+ROUGE-S4	0.068	0.073	0.069
+ROUGE-S9	0.075	0.080	0.074
+Table x. ROUGE evaluation of LSA
+
+	Random Extractor
+	basic	stem	stem, stop words
+ROUGE-1	0.267	0.284	0.244
+ROUGE-2	0.061	0.064	0.058
+ROUGE-L	0.158	0.162	0.170
+ROUGE-S	0.064	0.070	0.056
+ROUGE-S4	0.056	0.060	0.055
+ROUGE-S9	0.063	0.068	0.061
+Table x. ROUGE evaluation of Random Extractor
+
+
+CONCLUSION
+
+Each of the algorithms have its own pros and cons, as listed in the table below.
+Word Frequency	TF-IDF	TextRank with USE
+The algorithm selects words that are important for the context.	Fewer words are selected that are not important for context;
+suitable for multi-document summarization.	Selection of sentences depends on their similarity with other offers.
+Sometimes chosen words are not important for the context.	Problems may arise when summarizing documents with the same topics.	More complex and computationally intensive.
+Synonyms of a word are counted as separate words with different meanings.	Synonyms of words are counted as words with the same meaning.
+
+     The choice of the best algorithm depends on the purpose of the program. If the user of the program intends to produce the best quality summary, then it is TextRank with USE. If the user wants quick and efficient summarization of multiple documents with various topics, then the program must be developed with TF-IDF keyword selection algorithm. Meanwhile, Word Frequency algorithm is probably best suited for online text summarization web applications, where thousands of requests are being processed by relatively small servers.
+     In the future, the author plans to continue the project by revising and impoving upon summarization algorithms implemented in this study, implementing other abstractive summarization models, testing on other datasets, and adding the ability to summarize text in other languages such as Kazakh and Russian.

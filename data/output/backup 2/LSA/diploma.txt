@@ -1,0 +1,117 @@
+MINISTRY OF EDUCATION AND SCIENCE OF THE REPUBLIC OF
+KAZAKHSTAN
+“Kazakh-British Technical University” JSC
+Faculty of Information Technology
+Speciality 5B070300 “Information Systems”
+ADMITTED TO DEFENCE
+Dean of FIT,
+Associate Professor, PhD
+___________ R. Suliyev
+“___”___________ 2021
+
+
+EXPLANATORY NOTE
+TO GRADUATION PROJECT (work)
+Theme: “Automatic summarization of articles”
+
+ 
+Authors: 
+____________ A. Myrzash
+“___”____________ 2021
+Major: 
+5B070300  
+“Information Systems”
+
+Supervisor:
+Senior-lecturer
+______________ B. Mukhsimbayev
+“___”____________ 2021 
+Norms Compliance Monitor  
+____________ A. Omarova
+“___”____________ 2021 
+
+
+
+Almaty, 2021
+MINISTRY OF EDUCATION AND SCIENCE OF THE REPUBLIC OF
+KAZAKHSTAN
+“Kazakh-British Technical University” JSC
+Faculty of Information Technology
+Speciality 5B070300 “Information Systems”
+ADMITTED TO DEFENCE
+Dean of FIT,
+Associate Professor, PhD
+___________ R. Suliyev
+“___”___________ 2021
+
+                                
+DIPLOMA PROJECT ASSIGNMENT
+Students: Abzal Myrzash
+Project title: “Automatic summarization of articles”
+Approved by the KBTU order: № _______dated “___” ___________         
+Submission deadline: ____________________
+List of issues addressed in the diploma project or its brief content:
+     1. Over the course of the diploma project, the following objectives were set and accomplished:
+•	Research related projects carried out in the area of Natural Language Processing and Text Summarization;
+•	Build a dataset with documents in English to summarize;
+•	Analyze and pre-process linguistic parameters that affect key word extraction and summarization;
+•	Implement extractive and abstractive text summarization algorithms;
+•	Test and compare the algorithms using various metrics for evaluating the quality of computer-generated summary. ROUGE results	
+CONCLUSION	
+REFERENCES	
+APPENDIX	
+      Code for Word Frequency algorithm, v0.1.0	
+      Code for single-document TF-IDF algorithm, v0.2.0	
+      Code for multi-document TF-IDF algorithm, v0.2.1	
+      Code for TextRank algorithm, v0.3.0	
+      Code for TextRank algorithm with USE, v.0.3.1	
+      Code for Latent Semantic Analysis, v.0.4.0	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INTRODUCTION
+     In the age where technology has evolved to the point that one can share large amounts of information with millions of people all around the world in a matter of milliseconds, there is an enormous amount of unstructured textual material, including news articles, books, journals, web pages, being written every day. Therefore, the highest priority task in an extractive approach is selecting the right sentences or words for summarization. While in the party, Elizabeth collapsed and was rushed to the hospital.”
+an extractive summarizer would look for the most meaningful words and combine them into a shorter summary. Elizabeth rushed hospital.”
+     In practice, most articles contain much more sentences than that, so most extractive algorithms look for entire sentences instead of singular words. Abstractive summarizer
+     Using the same source text example from extractive summarization as input, an abstractive summarizer would paraphrase some of the words and produce a summary resembling:
+“Elizabeth was hospitalized after attending a party with Peter.”
+     The summarizer did not only correctly identify the main idea, but also rephrased “rushed to the hospital” to “hospitalized”, “Peter and Elizabeth … attend the night party …” to “attending a party with Peter” and compressed two sentences into one sentence. Finding those key words in an unprocessed text is a difficult task for computers, hence input text first needs to be properly pre-processed to summarize effectively. The pre-processing stage of text summarization includes, but is not limited to, cutting out unwanted parts of a text, converting the words to their most basic forms, and separating them using various Natural Language Processing techniques which will be described below. Stop words in the English language include function words, such as articles (“a”, “an”, “the”), pronouns (e.g. “at”, “on”, “in”), and even some common lexical words (e.g. The concept of removing stop words is frequently used in search engine optimization, but they are as important in extractive summarization. Since key words in most of such algorithms are determine by their frequency, the algorithm may select sentences with the most stop words instead of the most meaningful sentences to generate a summary if we do not remove them. Removing punctuation is also critical because punctuation may interfere with stemming, lemmatization, and word and sentence tokenization, and even determining stop words. Tokenization thefore will be classified into 3 types – sentence, word, and subword (n-gram) tokenization. The code of text summarization algorithms in this study will explicitly use only sentence and word tokenization, but that does not mean subword tokenization does not find its use implicitly (e.g. Word tokenization is employed in both extractive and abstractive summarization algorithms, to extract key words and generate a vocabulary of a document or a collection of documents. For instance, the sentence:
+“I’ve lived in the U.S.A. for 5 years.”
+ will be separated into 4 meaningless sentences:
+1) “I’ve lived in the U.”; 2) “S.”; 3) “A.”; 4) “for 5 years.”
+if we simply split the text by full stops. Stemming and lemmatization
+    For grammatical correctness, sentences are going to contain various forms of the same word, such as “use”, “uses”, and “using”. Furthermore, families of words with slightly different meanings can be derived from just one root word, for example: “digit”, “digital”, and “digitalize”. For instance, the rule:
+ 
+maps the word “movement” to “mov”, but not “cement” to “c”. Word Frequency
+     Word Frequency algorithm is one of the most basic extractive summarization algorithms, and also makes up the first version of the author’s text summarization program. Word Frequency algorithm flowchart
+     After the pre-processing stage of summarization, including steps such as tokenization, stemming, and stop word removal, is done, our main algorithm first calculates the weight of each unique word by counting the number of occurrences of that word (note: this also counts words that are different but have the same root, since all of the words were stemmed or lemmatized in the previous stage) in the document. In the second step, the word weights are used to calculate the score of every sentence in the document. The more “important” (higher-weighted) words a sentence has, the higher its score is, and the likelier it is to be included in the final summary. For example, the algorithm may choose widespread auxiliary words such as “can”, “have”, “however” over the word “intelligence” in an article about AI. It feeds on a sequence of sentences, words, characters or other tokens, encodes it, and then decodes it back in order to get a new sequence. In case of machine translation, the input would be original text, and the output is the same text translated to another language:
+ 
+    For Named Entity Recognition (NER), a Seq2Seq model would feed on a sequence of words and generate a sequence of NER tags for every inputed word. During each timestep, a word is fed into the encoder one by one along with the previous timestep’s internal memory and hidden states (if it is the first timestep, the states are randomly initialized). Examples of N-grams of words:
+•	Unigrams - car, refrigerator, bed, …
+•	Bigrams - beautiful car, big refrigerator, comfotable bed, ...
+•	Trigrams – I like football, long and tedious, ...
+     Due to the fact that a language is not a random set of words, N-grams are a good characteristic of texts and language. Many natural language processing algorithms use N-gram as a base for:
+•	language detection: methods based on the use of N-gram letters give more precision (googlelangdetect);
+•	text generation: a sequence of N-grams such that the end of the i-th N-gram is the beginning of i + 1 N-grams is syntactically related text;
+•	searching for semantic errors: if a word is not used in a given context, then the probability of encountering an N-gram containing this word in this context will be small (or 0), which allows us to conclude about a semantic error. However, the longest of them is “riding a bicycle and reading books in my”, which is 8 words long. Let 𝑋 be a sequence of words of an exemplary abstract of length 𝑛, 𝑌 be a sequence of words of an automatic abstract of length 𝑚, 𝐿𝐶𝑆 (𝑋, 𝑌) is the length of the longest common subsequence between 𝑋 and 𝑌. Let 𝑆𝐾𝐼𝑃2(𝑋, 𝑌) be the number of bigrams with gaps that occur both in a model abstract 𝑋 of length 𝑛 (words) and in an automatic abstract 𝑌 of length 𝑚. Manual analysis
+     For manual analysis of computer-generated summaries, extractive algorithms (Word Frequency, TF-IDF, TextRank, LSA) were performed on the following source text:
+ 
+Figure x. Sample source text about resilience, part 2
+     The article contains 58 sentences and over 1000 words. Meanwhile, Word Frequency algorithm is probably best suited for online text summarization web applications, where thousands of requests are being processed by relatively small servers.
